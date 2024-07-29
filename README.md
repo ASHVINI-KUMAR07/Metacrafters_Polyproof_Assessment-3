@@ -8,63 +8,63 @@ This project involves the deployment of a custom circuit written in Circom on th
 
 ### Templates
 ```
-pragma circom 2.0.0;
-
-
-template FirstCircuit () {  
+template MYCircuit () {  
    // input signals
-   signal input a;
-   signal input b;
+   signal input m;
+   signal input n;
 
-   // Internal input signals
-
+   // Internal signals
    signal x;
    signal y;
+   signal z;
 
    // output signals
    signal output Q;
 
-   // component
-   component andGate = AND();
+   // components
+   component andGate1 = AND();
    component orGate = OR();
    component notGate = NOT();
+   component andGate2 = AND();
 
    // logic
+   andGate1.m <== m;
+   andGate1.n <== n;
+   x <== andGate1.y;
 
-   andGate.a <== a;
-   andGate.b <== b;
-   x <== andGate.y;
+   orGate.m <== m;
+   orGate.n <== n;
+   y <== orGate.y;
 
-   notGate.in <== b;
-   y <== notGate.out;
+   notGate.in <== x;
+   z <== notGate.out;
 
-   orGate.a <== x;
-   orGate.b <== y;
-   Q <== orGate.y;
+   andGate2.m <== y;
+   andGate2.n <== z;
+   Q <== andGate2.y;
 }
 
 template AND(){
-   signal input a;
-   signal input b;
+   signal input m;
+   signal input n;
    signal output y;
-   y <== a*b;
+   y <== m * n;
 }
 
 template OR(){
-   signal input a;
-   signal input b;
+   signal input m;
+   signal input n;
    signal output y;
-   y <== a + b - a*b;
+   y <== m + n - m * n;
 }
 
 template NOT() {
     signal input in;
     signal output out;
-
-    out <== 1 + in - 2*in;
+    out <== 1 + in - 2 * in;
 }
 
-component main = FirstCircuit();
+component main = MYCircuit();
 ```
 
 ### Install
