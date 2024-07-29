@@ -146,5 +146,5 @@ To add a new circuit, you can run the `newcircuit` hardhat task to autogenerate 
 npx hardhat newcircuit --name newcircuit
 ```
 ## Contact 
-For any questions or inquiries, feel free to reach out via Mail(harshdeepsingh2809@gmail.com) or open an issue in the GitHub repository.
+For any questions, feel free to reach out via Mail(ashvinikumarcuchd123@gmail.com).
 
